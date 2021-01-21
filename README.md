@@ -11,7 +11,7 @@ You can use the `configure_osp.sh` script on your OpenShift install directory wi
 
 ```bash
 cd my-cluster-openshift-install-dir
-curl https://github.com/sridhargaddam/configure-osp-for-subm/master/configure_osp.sh -L -O
+curl https://raw.githubusercontent.com/sridhargaddam/configure-osp-for-subm/main/configure_osp.sh -L -O
 chmod a+x ./configure_osp.sh
 ./configure_osp.sh
 ```
