@@ -10,10 +10,8 @@ handling the requirements specified above.
 You can use the `configure_osp.sh` script on your OpenShift install directory with your openrc credentials correctly sourced.
 
 ```bash
-cd my-cluster-openshift-install-dir
-curl https://raw.githubusercontent.com/sridhargaddam/configure-osp-for-subm/main/configure_osp.sh -L -O
-chmod a+x ./configure_osp.sh
-./configure_osp.sh
+git clone https://github.com/sridhargaddam/configure-osp-for-subm.git
+./configure_osp.sh <openshift-install-dir>
 ```
 
 Certain parameters, such as the IPsec UDP ports can be customized before running the script. For example:

@@ -35,7 +35,7 @@ req_install() {
 
 copy_osp_ocp_scripts() {
   echo "Copying osp-scripts to $OCP_INS_DIR directory"
-  cp -af $OCP_INS_DIR/../osp-scripts $OCP_INS_DIR/
+  cp -af ./osp-scripts $OCP_INS_DIR/
   cd $OCP_INS_DIR/osp-scripts
 }
 
@@ -64,9 +64,7 @@ if [[ -z "$INFRA_ID" ]]; then
   exit 3
 fi
 
-cd $OCP_INS_DIR
-
-if [[ ! -d osp_ocp_scripts ]]; then
+if [[ ! -d $OCP_INS_DIR/osp_scripts ]]; then
   copy_osp_ocp_scripts
 fi
 
