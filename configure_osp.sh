@@ -8,10 +8,10 @@ IPSEC_NATT_PORT=${IPSEC_NATT_PORT:-4500}
 OCP_INS_DIR="$(realpath -- ${1:-.})"
 METADATA_JSON="${OCP_INS_DIR}/metadata.json"
 
-if [ -z "$OS_AUTH_URL" ]; then
-    echo "Please source the credentials for OpenStack cluster using openrc file before running this script"
-    exit 1
-fi
+#if [ -z "$OS_AUTH_URL" ]; then
+#    echo "Please source the credentials for OpenStack cluster using openrc file before running this script"
+#    exit 1
+#fi
 
 # Get Terraform apply options, for the rest of args (if given)
 if (( $# > 1 )) ; then
