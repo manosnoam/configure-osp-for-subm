@@ -4,13 +4,13 @@ locals {
 }
 
 provider "openstack" {
-  auth_url         = "<auth-url>"
-  user_name        = "<user-name>"
-  password         = "<password>"
-  user_domain_name = "<domainname>"
-  tenant_name      = "multi-cluster-networking"
-  project_domain_id = "<project-domain-id>"
-  region           = "regionOne"
+  auth_url         = "${var.osp_auth_url}"
+  user_name        = "${var.osp_user}"
+  password         = "${var.osp_password}"
+  user_domain_name = "${var.osp_domain}"
+  tenant_name      = "${var.osp_project}"
+  project_domain_id = "${var.osp_project_id}"
+  region           = "${var.osp_region}"
 }
 
 module "ocp-osp-prep" {
