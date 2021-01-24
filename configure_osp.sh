@@ -55,13 +55,21 @@ done
 
 
 # Main
+
 INFRA_ID=$(egrep -o -E '\"infraID\":\"([^\"]*)\"' $METADATA_JSON | cut -d: -f2 | tr -d \")
+REGION=$(egrep -o -E '\"region\":\"([^\"]*)\"' $METADATA_JSON | cut -d: -f2 | tr -d \")
 
 echo infraID: $INFRA_ID
+echo region: $REGION
 
 if [[ -z "$INFRA_ID" ]]; then
   echo "infraID could not be found in $METADATA_JSON" >&2
   exit 3
+fi
+
+if [[ -z "$REGION" ]]; then
+  echo "region could not be found in $METADATA_JSON" >&2
+  exit 4
 fi
 
 if [[ ! -d $OCP_INS_DIR/osp_scripts ]]; then
@@ -69,8 +77,16 @@ if [[ ! -d $OCP_INS_DIR/osp_scripts ]]; then
 fi
 
 sed -r "s/(cluster_id = ).*/\1\"$INFRA_ID\"/" -i main.tf
+sed -r "s/(region = ).*/\1\"$REGION\"/" -i main.tf
 sed -r "s/(ipsec_natt_port = ).*/\1$IPSEC_NATT_PORT/" -i main.tf
 sed -r "s/(ipsec_ike_port = ).*/\1$IPSEC_IKE_PORT/" -i main.tf
+sed -r "s/(auth_url = ).*/\1\"$OS_AUTH_URL\"/" -i main.tf
+sed -r "s/(user_name = ).*/\1\"$OS_USERNAME\"/" -i main.tf
+sed -r "s/(password = ).*/\1\"$OS_PASSWORD\"/" -i main.tf
+sed -r "s/(user_domain_name = ).*/\1\"$OS_USER_DOMAIN_NAME\"/" -i main.tf
+sed -r "s/(tenant_name = ).*/\1\"$OS_PROJECT_NAME\"/" -i main.tf
+sed -r "s/(project_domain_id = ).*/\1\"$OS_PROJECT_DOMAIN_ID\"/" -i main.tf
+sed -r "s/(auth_url = ).*/\1\"$OS_AUTH_URL\"/" -i main.tf
 
 terraform init
 terraform apply "${TERRAFORM_ARGS[@]}"
