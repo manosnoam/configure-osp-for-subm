@@ -9,3 +9,20 @@ variable "ipsec_natt_port" {
 variable "cluster_id" {
   description = "infraID from metadata json."
 }
+
+variable "osp_auth_url" { }
+
+variable "osp_user" { }
+
+variable "osp_password" { }
+
+variable "osp_domain" { }
+
+variable "osp_project" { }
+
+variable "osp_project_id" { }
+
+variable "osp_region" {
+  default = "regionOne"
+}
+
