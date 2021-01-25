@@ -68,16 +68,16 @@ if [[ ! -d $OCP_INS_DIR/osp_scripts ]]; then
   copy_osp_ocp_scripts
 fi
 
-sed -r "s/(cluster_id = ).*/\1\"$INFRA_ID\"/" -i main.tf
+sed -r "s/(cluster_id = ).*/\1$INFRA_ID/" -i main.tf
 sed -r "s/(ipsec_natt_port = ).*/\1$IPSEC_NATT_PORT/" -i main.tf
 sed -r "s/(ipsec_ike_port = ).*/\1$IPSEC_IKE_PORT/" -i main.tf
-sed -r "s/(os_auth_url = ).*/\1\"$OS_AUTH_URL\"/" -i main.tf
-sed -r "s/(os_user_name = ).*/\1\"$OS_USERNAME\"/" -i main.tf
-sed -r "s/(os_password = ).*/\1\"$OS_PASSWORD\"/" -i main.tf
-sed -r "s/(os_user_domain_name = ).*/\1\"$OS_USER_DOMAIN_NAME\"/" -i main.tf
-sed -r "s/(os_tenant_name = ).*/\1\"$OS_PROJECT_NAME\"/" -i main.tf
-sed -r "s/(os_project_domain_id = ).*/\1\"$OS_PROJECT_DOMAIN_ID\"/" -i main.tf
-sed -r "s/(os_region = ).*/\1\"$OS_REGION_NAME\"/" -i main.tf
+sed -r "s/(os_auth_url = ).*/\1$OS_AUTH_URL/" -i main.tf
+sed -r "s/(os_user_name = ).*/\1$OS_USERNAME/" -i main.tf
+sed -r "s/(os_password = ).*/\1$OS_PASSWORD/" -i main.tf
+sed -r "s/(os_user_domain_name = ).*/\1$OS_USER_DOMAIN_NAME/" -i main.tf
+sed -r "s/(os_tenant_name = ).*/\1$OS_PROJECT_NAME/" -i main.tf
+sed -r "s/(os_project_domain_id = ).*/\1$OS_PROJECT_DOMAIN_ID/" -i main.tf
+sed -r "s/(os_region = ).*/\1$OS_REGION_NAME/" -i main.tf
 
 terraform init
 terraform apply "${TERRAFORM_ARGS[@]}"
