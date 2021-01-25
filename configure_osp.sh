@@ -69,7 +69,6 @@ if [[ ! -d $OCP_INS_DIR/osp_scripts ]]; then
 fi
 
 sed -r "s/(cluster_id = ).*/\1\"$INFRA_ID\"/" -i main.tf
-sed -r "s/(os_region = ).*/\1\"$REGION\"/" -i main.tf
 sed -r "s/(ipsec_natt_port = ).*/\1$IPSEC_NATT_PORT/" -i main.tf
 sed -r "s/(ipsec_ike_port = ).*/\1$IPSEC_IKE_PORT/" -i main.tf
 sed -r "s/(os_auth_url = ).*/\1\"$OS_AUTH_URL\"/" -i main.tf
