@@ -9,3 +9,4 @@ variable "ipsec_natt_port" {
 variable "cluster_id" {
   description = "infraID from metadata json."
 }
+
